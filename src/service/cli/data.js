@@ -31,6 +31,19 @@ const articlePictures = [
   `forest@2x.jpg`,
   `sea@2x.jpg`,
   `skyscraper@2x.jpg`,
+  `road.jpg`,
+  `adventure.jpg`,
+  `city.jpg`,
+  `faroe.jpg`,
+  `field.jpg`,
+  `fog.jpg`,
+  `food.jpg`,
+  `georgia.jpg`,
+  `islands.jpg`,
+  `metro.jpg`,
+  `ny.jpg`,
+  `pet.jpg`,
+  `sheep.jpg`,
 ];
 
 const users = [
