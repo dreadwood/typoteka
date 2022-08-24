@@ -3,7 +3,7 @@
 /* global document, io */
 
 (() => {
-  const SERVER_URL = `http://localhost:3000`;
+  const SERVER_URL = `http://localhost:3010`;
 
   const socket = io(SERVER_URL);
 
