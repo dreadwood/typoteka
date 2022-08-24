@@ -1,11 +1,15 @@
 'use strict';
 
-/* global document, io */
+/* global window, document, io */
 
 (() => {
-  const SERVER_URL = `http://localhost:3010`;
+  const REST_HOST_URL = `http://localhost:3010`;
 
-  const socket = io(SERVER_URL);
+  const serverUrl = (window.location.hostname === `localhost`)
+    ? REST_HOST_URL
+    : window.location.origin;
+
+  const socket = io(serverUrl);
 
   const createMostDiscussedElement = (article) => {
     const template = document.querySelector(`#most-discussed-template`);

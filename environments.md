@@ -9,3 +9,7 @@
 # SESSION
 
 - `SESSION_SECRET` - секрет шифрования сессионных данных
+
+# URL
+
+- `SERVER_URL` - URL-адрес (с протоколом) REST сервера для работы socket.io
