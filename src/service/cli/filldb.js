@@ -1,6 +1,6 @@
 'use strict';
 
-const {getLogger} = require(`../lib/logger`);
+const chalk = require(`chalk`);
 const readContent = require(`../lib/read-content`);
 const sequelize = require(`../lib/sequelize`);
 const initDatabase = require(`../lib/init-db`);
@@ -11,8 +11,6 @@ const {ExitCode} = require(`../../constants`);
 const {getRandomValue} = require(`../../utils`);
 const {FilePath} = require(`./data`);
 
-const logger = getLogger({});
-
 module.exports = {
   name: `--filldb`,
   async run(args) {
@@ -20,13 +18,13 @@ module.exports = {
     const articleCount = getArticleCount(count);
 
     try {
-      logger.info(`Trying to connect to database...`);
+      console.info(chalk.green(`Trying to connect to database...`));
       await sequelize.authenticate();
     } catch (err) {
-      logger.error(`An error occurred: ${err.message}`);
+      console.error(chalk.red(`An error occurred: ${err.message}`));
       process.exit(ExitCode.error);
     }
-    await logger.info(`Connection to database established`);
+    console.info(chalk.green(`Connection to database established`));
 
     const titles = await readContent(FilePath.TITLES);
     const sentences = await readContent(FilePath.SENTENCES);
@@ -75,7 +73,15 @@ module.exports = {
       })),
     }));
 
-    await initDatabase(sequelize, {articles, categories, users});
-    sequelize.close();
+    try {
+      await initDatabase(sequelize, {articles, categories, users});
+      sequelize.close();
+      console.info(chalk.green(`Operation success. Data fill to database.`));
+    } catch (err) {
+      console.error(chalk.red(
+          `An error occurred adding data to the database: ${err.message}`,
+      ));
+      process.exit(ExitCode.error);
+    }
   },
 };

@@ -52,7 +52,7 @@ module.exports = {
       process.exit(ExitCode.error);
     }
 
-    await logger.info(`Connection to database established`);
+    logger.info(`Connection to database established`);
 
     const [customPort] = args;
     const port = Number.parseInt(customPort, 10) || REST_API_DEFAULT_PORT;
