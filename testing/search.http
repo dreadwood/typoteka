@@ -1,0 +1,5 @@
+### GET search
+GET http://localhost:3010/api/search HTTP/1.1
+
+### GET search?query=
+GET http://localhost:3010/api/search?query=Как HTTP/1.1

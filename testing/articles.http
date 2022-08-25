@@ -1,0 +1,38 @@
+### GET articles
+GET http://localhost:3010/api/articles HTTP/1.1
+
+### GET page with page
+GET http://localhost:3010/api/articles?offset=0&limit=8 HTTP/1.1
+
+### GET articles/:articleId
+GET http://localhost:3010/api/articles/10?comments=true HTTP/1.1
+
+### POST articles
+POST http://localhost:3010/api/articles HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Учим HTML и CSS",
+  "date": "2022-02-27 22:24:43",
+  "announce": "Золотое сечение — соотношение двух величин, гармоническая пропорция.",
+  "text": "Золотое сечение — соотношение двух величин, гармоническая пропорция. Простые ежедневные упражнения помогут достичь успеха.",
+  "сategories": ["1"],
+}
+
+### PUT articles/:articleId
+PUT http://localhost:3010/api/articles/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Учим HTML и CSS",
+  "date": "2022-02-27 22:24:43",
+  "announce": "Золотое сечение — соотношение двух величин, гармоническая пропорция.",
+  "text": "Золотое сечение — соотношение двух величин, гармоническая пропорция. Простые ежедневные упражнения помогут достичь успеха.",
+  "сategories": ["1"],
+}
+
+### DELETE articles/:articleId
+DELETE http://localhost:3010/api/articles/1 HTTP/1.1
+
+### GET most discussed
+GET http://localhost:3010/api/articles/discussed HTTP/1.1
