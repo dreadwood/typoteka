@@ -1,6 +1,8 @@
+-- remove DB and user if exists
 DROP DATABASE IF EXISTS typoteka_db;
 DROP ROLE IF EXISTS typoteka_user;
 
+-- create user
 CREATE ROLE typoteka_user WITH
   LOGIN
   NOSUPERUSER
@@ -11,11 +13,12 @@ CREATE ROLE typoteka_user WITH
   CONNECTION LIMIT -1
   PASSWORD 'typoteka_pass';
 
+-- create DB
 CREATE DATABASE typoteka_db
   WITH
   OWNER = typoteka_user
   ENCODING = 'UTF8'
   CONNECTION LIMIT = -1;
 
--- psql -h localhost -d postgres -U postgres <
--- psql -h localhost -d typoteka_db -U typoteka_user <
+-- psql -h localhost -d postgres -U postgres
+-- psql -h localhost -d typoteka_db -U typoteka_user
