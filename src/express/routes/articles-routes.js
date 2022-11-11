@@ -124,9 +124,11 @@ articlesRoutes.get(`/:id`, csrfProtection, async (req, res) => {
       csrfToken: req.csrfToken(),
     });
   } catch (error) {
-    res.status(error.response.status).render(`errors/404`, {
-      user,
-    });
+    if (error.response) {
+      res.status(error.response.status).render(`errors/404`);
+    } else {
+      res.render(`errors/404`);
+    }
   }
 });
 
